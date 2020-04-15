@@ -25,7 +25,7 @@
         margin-right: 8px;
     }
 }
-//全屏的类
+// 全屏的类
 .fullScreen {
     position: fixed;
     width   : 100vw;
@@ -44,3 +44,10 @@
     min-height: calc(100% - 40px);
     background-color: @primary-white;
 }
+
+// 取消滚动条
+.cancelScroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.cancelScroll::-webkit-scrollbar {display:none}

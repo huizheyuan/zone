@@ -1,27 +1,30 @@
 <template>
-    <a-layout id="components-layout-demo-responsive" style="height: 100vh">
-        <a-layout-sider :trigger="null" collapsible v-model="collapsed" class="bgWhite center" width="18vw">
+    <a-layout id="components-layout-demo-responsive">
+        <a-layout-sider 
+            :trigger="null" 
+            v-model="collapsed" 
+            collapsible 
+            class="bgWhite center cancelScroll" 
+            width="18vw"
+        >
             <div class="logo">
                 <div v-show="!collapsed">
-                    <img :src="logo" key="max-logo" />
+                    <img :src="logo" key="max-logo" class="maxLogo" />
                     <span class="title">小费费</span>
                 </div>
-                <img v-show="collapsed" :src="logo" key="min-logo" />
+                <img v-show="collapsed" :src="logo" key="min-logo" class="minLogo" />
             </div>
             <side-menu></side-menu>
         </a-layout-sider>
-        <a-layout>
+        <a-layout :style="{height: '100vh'}">
             <a-layout-header :style="{ background: '#fff', padding: 0 }">
                 <header-bar :collapsed='collapsed' @on-change-collapse='changeCollapse'></header-bar>
             </a-layout-header>
             <a-layout-content :style="{ margin: '24px 16px 0' }">
-                <div :style="{ padding: '24px', background: '#fff', minHeight: '80vh' }">
+                <div :style="{ overflow: 'hidden', background: '#fff', minHeight: '85vh', borderRadius: '10px' }">
                     <router-view></router-view>
                 </div>
             </a-layout-content>
-            <a-layout-footer class="center">
-                workpace ©2020 Created by Jennifer
-            </a-layout-footer>
         </a-layout>
     </a-layout>
 </template>
@@ -50,7 +53,7 @@ export default {
 <style lang="less" scoped>
 .logo {
     padding: 10px;
-    img {
+    .maxLogo {
         width: 50px;
         height: 50px;
     }
@@ -58,6 +61,10 @@ export default {
         font-size: 20px;
         font-weight: bold;
         margin: 0 10px;
+    }
+    .minLogo {
+        width: 35px;
+        height: 35px;
     }
 }
 </style>
